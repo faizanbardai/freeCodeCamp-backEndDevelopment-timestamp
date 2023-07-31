@@ -1,7 +1,9 @@
 const handleDate = (req, res) => {
   try {
     let { date } = req.params;
-    date = new Date(parseInt(date));
+
+    if (!isNaN(date)) date = new Date(parseInt(date));
+    else date = new Date(date);
 
     const utc = date.toUTCString();
 
